@@ -4,9 +4,9 @@
 # Contributor: Cristian Porras <porrascristian@gmail.com>
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
-pkgname=godot
+pkgname=godot-mine
 pkgver=3.4.2
-pkgrel=2
+pkgrel=2.0
 pkgdesc='Advanced cross-platform 2D and 3D game engine'
 url='https://godotengine.org'
 license=(MIT)
@@ -15,12 +15,17 @@ makedepends=(gcc scons yasm alsa-lib pulseaudio)
 depends=(embree freetype2 libglvnd libtheora libvorbis libvpx libwebp
          libwslay libxcursor libxi libxinerama libxrandr mbedtls miniupnpc opusfile)
 optdepends=(alsa-lib pulseaudio)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz")
-b2sums=('6bdc40acda57b038ef9fe4b579ac070001a09b4309a288859a5bb1a35b664257941a832c42d11eda6e3837c65689d6e96b4adf9131b6e040661a2b26c19a7d43')
-
+provides=('godot')
+conflicts=('godot')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz"
+        "enable_fwidth_gles2.patch")
+b2sums=('6bdc40acda57b038ef9fe4b579ac070001a09b4309a288859a5bb1a35b664257941a832c42d11eda6e3837c65689d6e96b4adf9131b6e040661a2b26c19a7d43'
+        '9ffe16a9aca4e750716a51e593e5b1d13e33cf897afb9dc41a55b11bba71ae2eb5bcf21725fe9d9bdb499f75232b114dac80ee75de477d572e47c05f9c9e62c0')
 prepare() {
   # Disable the check that adds -no-pie to LINKFLAGS, for gcc != 6
   sed -i 's,0] >,0] =,g' $pkgname-$pkgver-stable/platform/x11/detect.py
+
+  patch --strip=1 --directory=$pkgname-$pkgver-stable enable_fwidth_gles2.patch
 }
 
 build() {

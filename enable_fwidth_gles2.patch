@@ -1,0 +1,65 @@
+diff --git a/drivers/gles2/shaders/canvas.glsl b/drivers/gles2/shaders/canvas.glsl
+index f112ee821d..5eeb42f3ea 100644
+--- a/drivers/gles2/shaders/canvas.glsl
++++ b/drivers/gles2/shaders/canvas.glsl
+@@ -306,6 +306,8 @@ VERTEX_SHADER_CODE
+ /* clang-format off */
+ [fragment]
+ 
++#extension GL_OES_standard_derivatives : enable
++
+ // texture2DLodEXT and textureCubeLodEXT are fragment shader specific.
+ // Do not copy these defines in the vertex section.
+ #ifndef USE_GLES_OVER_GL
+diff --git a/drivers/gles2/shaders/scene.glsl b/drivers/gles2/shaders/scene.glsl
+index b09d9fe7ab..17296e1da6 100644
+--- a/drivers/gles2/shaders/scene.glsl
++++ b/drivers/gles2/shaders/scene.glsl
+@@ -725,6 +725,8 @@ VERTEX_SHADER_CODE
+ /* clang-format off */
+ [fragment]
+ 
++#extension GL_OES_standard_derivatives : enable
++
+ // texture2DLodEXT and textureCubeLodEXT are fragment shader specific.
+ // Do not copy these defines in the vertex section.
+ #ifndef USE_GLES_OVER_GL
+diff --git a/servers/visual/shader_language.cpp b/servers/visual/shader_language.cpp
+index 4b64abc786..b3b5aecf65 100644
+--- a/servers/visual/shader_language.cpp
++++ b/servers/visual/shader_language.cpp
+@@ -2084,20 +2084,20 @@ const ShaderLanguage::BuiltinFuncDef ShaderLanguage::builtin_func_defs[] = {
+ 	{ "textureGrad", TYPE_UVEC4, { TYPE_USAMPLER3D, TYPE_VEC3, TYPE_VEC3, TYPE_VEC3, TYPE_VOID }, TAG_GLOBAL, true },
+ 	{ "textureGrad", TYPE_VEC4, { TYPE_SAMPLERCUBE, TYPE_VEC3, TYPE_VEC3, TYPE_VEC3, TYPE_VOID }, TAG_GLOBAL, true },
+ 
+-	{ "dFdx", TYPE_FLOAT, { TYPE_FLOAT, TYPE_VOID }, TAG_GLOBAL, true },
+-	{ "dFdx", TYPE_VEC2, { TYPE_VEC2, TYPE_VOID }, TAG_GLOBAL, true },
+-	{ "dFdx", TYPE_VEC3, { TYPE_VEC3, TYPE_VOID }, TAG_GLOBAL, true },
+-	{ "dFdx", TYPE_VEC4, { TYPE_VEC4, TYPE_VOID }, TAG_GLOBAL, true },
+-
+-	{ "dFdy", TYPE_FLOAT, { TYPE_FLOAT, TYPE_VOID }, TAG_GLOBAL, true },
+-	{ "dFdy", TYPE_VEC2, { TYPE_VEC2, TYPE_VOID }, TAG_GLOBAL, true },
+-	{ "dFdy", TYPE_VEC3, { TYPE_VEC3, TYPE_VOID }, TAG_GLOBAL, true },
+-	{ "dFdy", TYPE_VEC4, { TYPE_VEC4, TYPE_VOID }, TAG_GLOBAL, true },
+-
+-	{ "fwidth", TYPE_FLOAT, { TYPE_FLOAT, TYPE_VOID }, TAG_GLOBAL, true },
+-	{ "fwidth", TYPE_VEC2, { TYPE_VEC2, TYPE_VOID }, TAG_GLOBAL, true },
+-	{ "fwidth", TYPE_VEC3, { TYPE_VEC3, TYPE_VOID }, TAG_GLOBAL, true },
+-	{ "fwidth", TYPE_VEC4, { TYPE_VEC4, TYPE_VOID }, TAG_GLOBAL, true },
++	{ "dFdx", TYPE_FLOAT, { TYPE_FLOAT, TYPE_VOID }, TAG_GLOBAL, false },
++	{ "dFdx", TYPE_VEC2, { TYPE_VEC2, TYPE_VOID }, TAG_GLOBAL, false },
++	{ "dFdx", TYPE_VEC3, { TYPE_VEC3, TYPE_VOID }, TAG_GLOBAL, false },
++	{ "dFdx", TYPE_VEC4, { TYPE_VEC4, TYPE_VOID }, TAG_GLOBAL, false },
++
++	{ "dFdy", TYPE_FLOAT, { TYPE_FLOAT, TYPE_VOID }, TAG_GLOBAL, false },
++	{ "dFdy", TYPE_VEC2, { TYPE_VEC2, TYPE_VOID }, TAG_GLOBAL, false },
++	{ "dFdy", TYPE_VEC3, { TYPE_VEC3, TYPE_VOID }, TAG_GLOBAL, false },
++	{ "dFdy", TYPE_VEC4, { TYPE_VEC4, TYPE_VOID }, TAG_GLOBAL, false },
++
++	{ "fwidth", TYPE_FLOAT, { TYPE_FLOAT, TYPE_VOID }, TAG_GLOBAL, false },
++	{ "fwidth", TYPE_VEC2, { TYPE_VEC2, TYPE_VOID }, TAG_GLOBAL, false },
++	{ "fwidth", TYPE_VEC3, { TYPE_VEC3, TYPE_VOID }, TAG_GLOBAL, false },
++	{ "fwidth", TYPE_VEC4, { TYPE_VEC4, TYPE_VOID }, TAG_GLOBAL, false },
+ 
+ 	//sub-functions
+ 
