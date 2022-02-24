@@ -26,7 +26,7 @@ prepare() {
   # Disable the check that adds -no-pie to LINKFLAGS, for gcc != 6
   sed -i 's,0] >,0] =,g' $pkgname-$pkgver-stable/platform/x11/detect.py
 
-  patch --strip=1 --directory=$pkgname-$pkgver-stable enable_fwidth_gles2.patch
+  patch --strip=1 --directory=$pkgname-$pkgver-stable --input="$srcdir/enable_fwidth_gles2.patch"
 }
 
 build() {
