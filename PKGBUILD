@@ -65,7 +65,7 @@ package() {
   install -Dm644 misc/dist/linux/org.godotengine.Godot.desktop \
     "$pkgdir/usr/share/applications/godot.desktop"
   install -Dm644 icon.svg "$pkgdir/usr/share/pixmaps/godot.svg"
-  install -Dm755 bin/godot.x11.opt.tools.64 "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 bin/godot.x11.opt.tools.64 "$pkgdir/usr/bin/godot"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/godot/LICENSE"
   install -Dm644 misc/dist/linux/godot.6 "$pkgdir/usr/share/man/man6/godot.6"
   install -Dm644 misc/dist/linux/org.godotengine.Godot.xml \
