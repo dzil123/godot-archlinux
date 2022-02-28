@@ -6,7 +6,7 @@
 
 pkgname=godot-mine
 pkgver=3.4.3
-pkgrel=0.1
+pkgrel=0.2
 pkgdesc='Advanced cross-platform 2D and 3D game engine'
 url='https://godotengine.org'
 license=(MIT)
@@ -18,9 +18,11 @@ optdepends=(alsa-lib pulseaudio)
 provides=('godot')
 conflicts=('godot')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz"
-        "enable_fwidth_gles2.patch")
+        "enable_fwidth_gles2.patch"
+        "fix_update_gridmap_cursor.patch")
 b2sums=('5b491aa92bfde70adf7a4b6bd981d48df0272496c07249f1d97691397a1212c85df97d1adf719d3f7a5877180c2b0362fc5940b4801b3904800c37261cbc59f4'
-        '9ffe16a9aca4e750716a51e593e5b1d13e33cf897afb9dc41a55b11bba71ae2eb5bcf21725fe9d9bdb499f75232b114dac80ee75de477d572e47c05f9c9e62c0')
+        '9ffe16a9aca4e750716a51e593e5b1d13e33cf897afb9dc41a55b11bba71ae2eb5bcf21725fe9d9bdb499f75232b114dac80ee75de477d572e47c05f9c9e62c0'
+        '4408081a160f3f458131a316543f993aeface4ab2c3e85e2ec9d5a50075cd7cd667da9697b85d277dd403f28ffe16912cd99e0c4ad1a4b031a38b3fadbfc49c2')
 prepare() {
   mv godot-$pkgver-stable $pkgname-$pkgver-stable
   # Disable the check that adds -no-pie to LINKFLAGS, for gcc != 6

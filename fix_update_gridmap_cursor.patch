@@ -1,0 +1,12 @@
+diff --git a/modules/gridmap/grid_map_editor_plugin.cpp b/modules/gridmap/grid_map_editor_plugin.cpp
+index ec8f33715..163a0f172 100644
+--- a/modules/gridmap/grid_map_editor_plugin.cpp
++++ b/modules/gridmap/grid_map_editor_plugin.cpp
+@@ -938,6 +938,7 @@ void GridMapEditor::edit(GridMap *p_gridmap) {
+ 	}
+ 
+ 	update_palette();
++	_update_cursor_instance();
+ 
+ 	set_process(true);
+ 
