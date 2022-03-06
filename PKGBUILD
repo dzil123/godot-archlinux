@@ -6,7 +6,7 @@
 
 pkgname=godot-mine
 pkgver=3.4.3
-pkgrel=0.3
+pkgrel=1.0
 pkgdesc='Advanced cross-platform 2D and 3D game engine'
 url='https://godotengine.org'
 license=(MIT)
@@ -14,7 +14,7 @@ arch=(x86_64)
 makedepends=(gcc scons yasm alsa-lib pulseaudio)
 depends=(embree freetype2 libglvnd libtheora libvorbis libvpx libwebp
          libwslay libxcursor libxi libxinerama libxrandr mbedtls miniupnpc opusfile)
-optdepends=(alsa-lib pulseaudio)
+optdepends=(pipewire-alsa pipewire-pulse)
 provides=('godot')
 conflicts=('godot')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz"
