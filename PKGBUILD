@@ -5,8 +5,8 @@
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 pkgname=godot-mine
-pkgver=3.4.3
-pkgrel=1.0
+pkgver=3.4.4
+pkgrel=2
 pkgdesc='Advanced cross-platform 2D and 3D game engine'
 url='https://godotengine.org'
 license=(MIT)
@@ -20,7 +20,7 @@ conflicts=('godot')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz"
         "enable_fwidth_gles2.patch"
         "fix_update_gridmap_cursor.patch")
-b2sums=('5b491aa92bfde70adf7a4b6bd981d48df0272496c07249f1d97691397a1212c85df97d1adf719d3f7a5877180c2b0362fc5940b4801b3904800c37261cbc59f4'
+b2sums=('c1e93eaec776967ef6a2a4237776e022075497a36c39bf59ca7003de3311729c7a6465698d6beff652274675a0be73fe7e00a880c127bbb33888d360f47fe10e'
         '9ffe16a9aca4e750716a51e593e5b1d13e33cf897afb9dc41a55b11bba71ae2eb5bcf21725fe9d9bdb499f75232b114dac80ee75de477d572e47c05f9c9e62c0'
         '4408081a160f3f458131a316543f993aeface4ab2c3e85e2ec9d5a50075cd7cd667da9697b85d277dd403f28ffe16912cd99e0c4ad1a4b031a38b3fadbfc49c2')
 prepare() {
